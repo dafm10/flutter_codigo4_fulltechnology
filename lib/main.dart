@@ -4,6 +4,7 @@ import 'package:flutter_codigo4_fulltechnology/pages/admin/home_admin_page.dart'
 import 'package:flutter_codigo4_fulltechnology/pages/admin/login_admin_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/seller/home_seller_page.dart';
 import 'package:flutter_codigo4_fulltechnology/provider/shopping_provider.dart';
+import 'package:flutter_codigo4_fulltechnology/utils/push_notification_service.dart';
 import 'package:flutter_codigo4_fulltechnology/utils/sp_global.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,7 @@ void main() async {
   SPGlobal prefs = SPGlobal();
   await prefs.initShared();
   await Firebase.initializeApp();
+  await PushNotificationService.initilizedApp();
   // Firebase.initializeApp().then((value) {
   //   runApp(const MyApp());
   // });

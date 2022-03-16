@@ -6,15 +6,46 @@ import 'package:flutter_codigo4_fulltechnology/pages/seller/sale_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/seller/ventas_seller_page.dart';
 import 'package:flutter_codigo4_fulltechnology/ui/widget/item_menu_widget.dart';
 import 'package:flutter_codigo4_fulltechnology/utils/sp_global.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class HomeSellerPage extends StatelessWidget {
   SPGlobal prefs = SPGlobal();
+
+  showNotification() {
+    FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+
+    AndroidNotificationChannel channel = AndroidNotificationChannel(
+      "full_tecnologia_channerl",
+      "Full Tecnología",
+      description: "Es un canal con mucha prioridad",
+    );
+
+    _flutterLocalNotificationsPlugin.show(
+      0,
+      "Hola",
+      "Compra mas seguido",
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          channel.id,
+          channel.name,
+          channelDescription: channel.description,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     // print(shoppingProvider.productLength);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.message),
+        onPressed: () {
+          showNotification();
+        },
+      ),
       backgroundColor: const Color(0xff2C3145),
       body: SingleChildScrollView(
         child: Column(
