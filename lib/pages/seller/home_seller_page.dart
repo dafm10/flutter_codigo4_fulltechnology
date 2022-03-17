@@ -11,9 +11,27 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 class HomeSellerPage extends StatelessWidget {
   SPGlobal prefs = SPGlobal();
 
-  showNotification() {
+  showNotification() async {
     FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
         FlutterLocalNotificationsPlugin();
+    // AndroidInitializationSettings _androidInitializationSettings =
+    //     AndroidInitializationSettings("@mipmap/ic_launcher");
+
+    IOSInitializationSettings _iOSInitializationSettings =
+        IOSInitializationSettings(
+      defaultPresentAlert: true,
+      defaultPresentBadge: true,
+      defaultPresentSound: true,
+      requestAlertPermission: false,
+      requestBadgePermission: false,
+      requestSoundPermission: false,
+    );
+
+    InitializationSettings _initializationSettings = InitializationSettings(
+      iOS: _iOSInitializationSettings,
+    );
+
+    await _flutterLocalNotificationsPlugin.initialize(_initializationSettings);
 
     AndroidNotificationChannel channel = AndroidNotificationChannel(
       "full_tecnologia_channerl",
@@ -21,16 +39,20 @@ class HomeSellerPage extends StatelessWidget {
       description: "Es un canal con mucha prioridad",
     );
 
+    const IOSNotificationDetails iOSPlatformChannelSpecifics =
+        IOSNotificationDetails(sound: 'slow_spring_board.aiff');
+
     _flutterLocalNotificationsPlugin.show(
       0,
       "Hola",
       "Compra mas seguido",
       NotificationDetails(
-        android: AndroidNotificationDetails(
-          channel.id,
-          channel.name,
-          channelDescription: channel.description,
-        ),
+        iOS: iOSPlatformChannelSpecifics,
+        // android: AndroidNotificationDetails(
+        //   channel.id,
+        //   channel.name,
+        //   channelDescription: channel.description,
+        // ),
       ),
     );
   }
