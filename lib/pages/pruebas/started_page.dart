@@ -43,6 +43,7 @@ class _StartedPageState extends State<StartedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -52,22 +53,19 @@ class _StartedPageState extends State<StartedPage> {
                 physics: const BouncingScrollPhysics(),
                 controller: _pageController,
                 scrollDirection: Axis.horizontal,
-                itemCount: 3,
+                itemCount: slideList.length,
                 onPageChanged: _onPageChange,
                 itemBuilder: (context, index) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 200.0,
-                        width: 200.0,
-                        color: Colors.black,
-                      ),
+                      Image.asset(
+                          "assets/images/${slideList[index].image}.png"),
                       const SizedBox(
                         height: 20.0,
                       ),
                       Text(
-                        "Tus primeros pasos para nuestra App",
+                        slideList[index].title,
                         style: TextStyle(
                           fontSize: 18.0,
                         ),
@@ -76,7 +74,7 @@ class _StartedPageState extends State<StartedPage> {
                         height: 12.0,
                       ),
                       Text(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elit ex, ut aliquam leo efficitur vel.",
+                        slideList[index].subtitle,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 12.0,
@@ -116,3 +114,36 @@ class _StartedPageState extends State<StartedPage> {
     );
   }
 }
+
+class Slide {
+  final String image;
+  final String title;
+  final String subtitle;
+
+  Slide({
+    required this.image,
+    required this.title,
+    required this.subtitle,
+  });
+}
+
+final slideList = [
+  Slide(
+    image: '1',
+    title: "Empecemos con nuestra App",
+    subtitle:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elit ex, ut aliquam leo efficitur vel.",
+  ),
+  Slide(
+    image: '2',
+    title: "Empecemos con nuestra App",
+    subtitle:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elit ex, ut aliquam leo efficitur vel.",
+  ),
+  Slide(
+    image: '3',
+    title: "Empecemos con nuestra App",
+    subtitle:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elit ex, ut aliquam leo efficitur vel.",
+  ),
+];

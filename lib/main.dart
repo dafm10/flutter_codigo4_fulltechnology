@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/admin/home_admin_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/admin/login_admin_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/seller/home_seller_page.dart';
-import 'package:flutter_codigo4_fulltechnology/pages/started_page.dart';
+import 'package:flutter_codigo4_fulltechnology/pages/pruebas/started_page.dart';
 import 'package:flutter_codigo4_fulltechnology/provider/shopping_provider.dart';
 import 'package:flutter_codigo4_fulltechnology/utils/push_notification_service.dart';
 import 'package:flutter_codigo4_fulltechnology/utils/sp_global.dart';
