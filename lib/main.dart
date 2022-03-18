@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/admin/home_admin_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/admin/login_admin_page.dart';
+import 'package:flutter_codigo4_fulltechnology/pages/pruebas/home_prueba_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/pruebas/matrix4_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/seller/home_seller_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/pruebas/started_page.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: GoogleFonts.manropeTextTheme(),
         ),
-        home: const Matrix4Page(),
+        home: const HomePruebPage(),
       ),
     );
   }
