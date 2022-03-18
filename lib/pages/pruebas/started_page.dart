@@ -85,6 +85,24 @@ class _StartedPageState extends State<StartedPage> {
                 },
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: slideList.asMap().entries.map(
+                (e) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: _currentIndex == e.key
+                          ? Colors.black
+                          : Colors.black12,
+                      shape: BoxShape.circle,
+                    ),
+                    margin: const EdgeInsets.all(12.0),
+                    height: 20.0,
+                    width: 20.0,
+                  );
+                },
+              ).toList(),
+            ),
             const SizedBox(
               height: 20.0,
             ),
