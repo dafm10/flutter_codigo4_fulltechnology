@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_codigo4_fulltechnology/pages/admin/login_admin_page.dart';
 
 class StartedPage extends StatefulWidget {
   const StartedPage({Key? key}) : super(key: key);
@@ -41,7 +42,16 @@ class _StartedPageState extends State<StartedPage> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _pageController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // print(slideList.asMap().entries);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -66,7 +76,7 @@ class _StartedPageState extends State<StartedPage> {
                       ),
                       Text(
                         slideList[index].title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18.0,
                         ),
                       ),
@@ -76,7 +86,7 @@ class _StartedPageState extends State<StartedPage> {
                       Text(
                         slideList[index].subtitle,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12.0,
                         ),
                       ),
@@ -97,8 +107,8 @@ class _StartedPageState extends State<StartedPage> {
                       shape: BoxShape.circle,
                     ),
                     margin: const EdgeInsets.all(12.0),
-                    height: 20.0,
-                    width: 20.0,
+                    height: _currentIndex == e.key ? 30 : 20.0,
+                    width: _currentIndex == e.key ? 30 : 20.0,
                   );
                 },
               ).toList(),
@@ -111,7 +121,14 @@ class _StartedPageState extends State<StartedPage> {
                 CupertinoButton(
                   color: Colors.black87,
                   child: const Text("Getting Started"),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginAdminPage(),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(
                   height: 10.0,

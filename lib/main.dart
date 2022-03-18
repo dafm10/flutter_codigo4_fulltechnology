@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: GoogleFonts.manropeTextTheme(),
         ),
-        home: StartedPage(),
+        home: const StartedPage(),
       ),
     );
   }
@@ -63,7 +63,7 @@ class PreInit extends StatelessWidget {
           } else if (role == "Vendedor") {
             return HomeSellerPage();
           } else {
-            return LoginAdminPage();
+            return const LoginAdminPage();
           }
         }
         return const Scaffold(
