@@ -22,7 +22,7 @@ class _HomePruebPageState extends State<HomePruebPage> {
                   CircleAvatar(
                     radius: 30.0,
                     backgroundImage: NetworkImage(
-                      "https://images.pexels.com/photos/11334018/pexels-photo-11334018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                      "https://images.pexels.com/photos/8744113/pexels-photo-8744113.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                     ),
                   ),
                   SizedBox(
@@ -31,6 +31,7 @@ class _HomePruebPageState extends State<HomePruebPage> {
                   Text("María de todos los Angeles"),
                 ],
               ),
+              const SizedBox(height: 40.0),
               Column(
                 children: [
                   NewItem(
@@ -63,6 +64,22 @@ class _HomePruebPageState extends State<HomePruebPage> {
                     title: "General",
                   ),
                   const SizedBox(height: 20.0),
+                ],
+              ),
+              Expanded(child: Container()),
+              Row(
+                children: const [
+                  Icon(Icons.cancel_outlined),
+                  SizedBox(width: 10.0),
+                  Text("Cerrar Sesión"),
+                ],
+              ),
+              const SizedBox(height: 12.0),
+              Row(
+                children: const [
+                  Icon(Icons.add_chart_outlined),
+                  SizedBox(width: 10.0),
+                  Text("Acerca de nosotros"),
                 ],
               ),
             ],
