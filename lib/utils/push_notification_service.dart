@@ -5,7 +5,7 @@ class PushNotificationService {
 
   static Future initilizedApp() async {
     String token = await messaging.getToken() ?? "";
-    print(token);
+    // print(token);
 
     FirebaseMessaging.onMessage.listen(_onMessage);
     FirebaseMessaging.onBackgroundMessage(_onBackgroundMessage);

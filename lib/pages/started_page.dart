@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class StartedPage extends StatefulWidget {
   const StartedPage({Key? key}) : super(key: key);
@@ -22,8 +21,17 @@ class _StartedPageState extends State<StartedPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Timer.periodic(Duration(seconds: 2), (timer) {
-      print(timer);
+    Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (_currentIndex < 2) {
+        _currentIndex++;
+      } else {
+        _currentIndex = 0;
+      }
+      _pageController.animateToPage(
+        _currentIndex,
+        duration: Duration(milliseconds: 400),
+        curve: Curves.easeIn,
+      );
     });
   }
 
@@ -35,20 +43,46 @@ class _StartedPageState extends State<StartedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             Expanded(
               child: PageView.builder(
+                physics: const BouncingScrollPhysics(),
                 controller: _pageController,
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: 3,
                 onPageChanged: _onPageChange,
                 itemBuilder: (context, index) {
-                  return Center(
-                    child: Text("A $index"),
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 200.0,
+                        width: 200.0,
+                        color: Colors.black,
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      Text(
+                        "Tus primeros pasos para nuestra App",
+                        style: TextStyle(
+                          fontSize: 18.0,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
+                      Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod elit ex, ut aliquam leo efficitur vel.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 12.0,
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),
