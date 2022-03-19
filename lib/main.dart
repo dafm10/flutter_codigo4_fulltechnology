@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/admin/home_admin_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/admin/login_admin_page.dart';
 import 'package:flutter_codigo4_fulltechnology/pages/pruebas/description_page.dart';
@@ -23,6 +24,8 @@ void main() async {
   // Firebase.initializeApp().then((value) {
   //   runApp(const MyApp());
   // });
+  // Para forzar que solo sea 1 sola orientación
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
